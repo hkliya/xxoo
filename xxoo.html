@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>xxoo</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+		<script type="text/javascript" src="lib/noty/jquery.noty.js"></script>
+
+		<script type="text/javascript" src="lib/noty/layouts/top.js"></script>
+		<script type="text/javascript" src="lib/noty/layouts/topCenter.js"></script>
+		<script type="text/javascript" src="lib/noty/layouts/topLeft.js"></script>
+		<script type="text/javascript" src="lib/noty/layouts/topRight.js"></script>
+		<!-- You can add more layouts if you want -->
+
+		<script type="text/javascript" src="lib/noty/themes/default.js"></script>
+		<style type="text/css">
+		body {
+			text-align:center;
+			margin:0 auto;
+		}
+		table { 
+			margin: 100px auto;
+			background:#ccc;
+		}
+		
+		table td {
+			text-align: center;
+			width: 125px;
+			height: 125px;
+			cursor: pointer;
+			background-color:#000;
+		}
+		
+		.red {
+			background:url(images/red.gif);
+		}
+		
+		.green {
+			background:url(images/green.gif);
+		}
+			
+		</style>
+		<script type="text/javascript" src="xxoo.js"></script>
+		<script>
+		
+		var game;
+		var rows = 3, cols = 3;
+		$(document).ready(function() {
+			restartGame();
+		});
+		
+		function restartGame() {
+			game = new Xxoo();
+			cleanCanvas();
+		}
+		
+		function cleanCanvas() {
+			var $canvas = $("#canvas");
+			$canvas.empty();
+			for (var i=0; i<rows; i++) {
+				var $tr = $("<tr></tr>");
+				for (var j=0; j<cols; j++) {
+					var $td = $("<td></td>");
+					bind($td, i, j);
+					$tr.append($td);
+				}
+				$canvas.append($tr);
+			}
+			
+		}
+		
+		function bind($td, x, y) {
+			$td.click(function() {
+				// alert(i + "" + j);
+				var isSuccess = game.place(x, y);
+				if (isSuccess) {
+					$td.addClass((game.last == 1 ? "red" : "green"));
+					var winner = game.winner();
+					if (winner) {
+						notify("player" + winner + " win!", function() {
+							restartGame();
+						});
+					}
+				}
+				
+			});
+		}
+		
+		function notify(msg, onClose) {
+			noty({modal:true, timeout:2000, layout:"topCenter", type:"success", text: msg, onClose:onClose});
+		}
+		</script>
+	</head>
+	<body>
+		<table border='0' cellpadding='2' cellspacing='2' id="canvas">
+		</table>
+	</body>
+</html>
