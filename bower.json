@@ -1,0 +1,25 @@
+{
+  "name": "xxoo",
+  "version": "0.0.1",
+  "homepage": "https://github.com/hkliya/xxoo",
+  "authors": [
+    "Seaborn Lee <seabornlee.cn@gmail.com>"
+  ],
+  "description": "A simple game.",
+  "main": "index.html",
+  "keywords": [
+    "jasmine"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "noty": "~2.3.4"
+  }
+}
