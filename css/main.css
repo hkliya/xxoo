@@ -1,0 +1,25 @@
+body {
+  text-align:center;
+  margin:0 auto;
+}
+
+table { 
+  margin: 100px auto;
+  background: #ccc;
+}
+
+table td {
+  text-align: center;
+  width: 125px;
+  height: 125px;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+.red {
+  background: url(images/cross.png);
+}
+
+.green {
+  background: url(images/circle.png);
+}
