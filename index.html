@@ -19,42 +19,42 @@
 			text-align:center;
 			margin:0 auto;
 		}
+
 		table { 
 			margin: 100px auto;
-			background:#ccc;
+			background: #ccc;
 		}
-		
+
 		table td {
 			text-align: center;
 			width: 125px;
 			height: 125px;
 			cursor: pointer;
-			background-color:#000;
+            border: 1px solid #fff;
 		}
-		
+
 		.red {
-			background:url(images/red.gif);
+			background: url(images/cross.png);
 		}
-		
+
 		.green {
-			background:url(images/green.gif);
+			background: url(images/circle.png);
 		}
-			
 		</style>
 		<script type="text/javascript" src="xxoo.js"></script>
 		<script>
-		
+
 		var game;
 		var rows = 3, cols = 3;
 		$(document).ready(function() {
 			restartGame();
 		});
-		
+
 		function restartGame() {
 			game = new Xxoo();
 			cleanCanvas();
 		}
-		
+
 		function cleanCanvas() {
 			var $canvas = $("#canvas");
 			$canvas.empty();
@@ -67,9 +67,9 @@
 				}
 				$canvas.append($tr);
 			}
-			
+
 		}
-		
+
 		function bind($td, x, y) {
 			$td.click(function() {
 				// alert(i + "" + j);
@@ -83,10 +83,10 @@
 						});
 					}
 				}
-				
+
 			});
 		}
-		
+
 		function notify(msg, onClose) {
 			noty({modal:true, timeout:2000, layout:"topCenter", type:"success", text: msg, onClose:onClose});
 		}
