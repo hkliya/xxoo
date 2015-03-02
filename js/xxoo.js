@@ -44,8 +44,7 @@ Xxoo.prototype = {
   },
 
   checkWinnerByOblique: function() {
-    return this.map[1][1] !== 0 && ((this.map[0][0] == this.map[1][1] && this.map[1][1] == this.map[2][2])
-      || (this.map[1][1] == this.map[2][0] && this.map[1][1] == this.map[0][2])) ? this.map[1][1] : false;
+    return this.checkOneRow([this.map[0][0], this.map[1][1], this.map[2][2]]) || this.checkOneRow([this.map[2][0], this.map[1][1], this.map[0][2]]);
   },
 
   checkOneRow: function(arr) {
