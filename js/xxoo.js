@@ -33,13 +33,14 @@ Xxoo.prototype = {
   },
 
   checkWinnerByRow: function( arr ) {
-    for (var i=0; i<arr.length; i++) {
-      var result = this.checkOneRow(arr[i]);
-      if (result) {
-        return result;
-      }
-    }
-    return false;
+    var result = false;
+
+    _.find(arr, function(row) {
+      result = this.checkOneRow(row);
+      return result;
+    }, this);
+
+    return result;
   },
 
   checkWinnerByOblique: function() {
@@ -48,7 +49,12 @@ Xxoo.prototype = {
   },
 
   checkOneRow: function(arr) {
-    return (arr[0] !== 0 && arr[0] === arr[1] && arr[1] === arr[2]) ? arr[0] : false;
+    var uniqArr = _.uniq(arr);
+    if (uniqArr.length > 1 || uniqArr[0] === 0) {
+      return false;
+    }
+
+    return uniqArr[0];
   },
 
   fanzhuan: function(arr) {
