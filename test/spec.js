@@ -114,4 +114,18 @@ describe("xxoo", function() {
     expect(newarr[1]).toEqual([2,5,8]);
     expect(newarr[2]).toEqual([3,6,9]);
   });
+
+  it("draws when no more space to place", function() {
+    var g = new Xxoo();
+    g.place(0, 0);
+    g.place(0, 1);
+    g.place(2, 0);
+    g.place(1, 0);
+    g.place(2, 1);
+    g.place(1, 1);
+    g.place(1, 2);
+    g.place(0, 2);
+    g.place(2, 2);
+    expect(g.draw()).toBe(true);
+  });
 });

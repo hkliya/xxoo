@@ -27,18 +27,20 @@ function cleanCanvas() {
 
 function bind($td, x, y) {
   $td.click(function() {
-    // alert(i + "" + j);
     var isSuccess = game.place(x, y);
     if (isSuccess) {
       $td.addClass((game.last == 1 ? "red" : "green"));
       var winner = game.winner();
       if (winner) {
-        notify("player" + winner + " win!", function() {
+        notify("Player" + winner + " win! Restarting...", function() {
+          restartGame();
+        });
+      } else if (game.draw()) {
+        notify("Draw! Restarting...", function() {
           restartGame();
         });
       }
     }
-
   });
 }
 
@@ -47,7 +49,7 @@ function notify(msg, onClose) {
     modal: true, 
     timeout: 2000,
     layout: "topCenter",
-    type: "success",
+    type: "alert",
     text: msg,
     callback: {
       onClose: onClose

@@ -67,5 +67,10 @@ Xxoo.prototype = {
       newarr[i] = arow;
     }
     return newarr;
+  },
+  draw: function() {
+    return _.every(_.flatten(this.map), function(cell) {
+      return cell !== 0;
+    });
   }
 };
