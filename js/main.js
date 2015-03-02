@@ -43,5 +43,14 @@ function bind($td, x, y) {
 }
 
 function notify(msg, onClose) {
-  noty({modal:true, timeout:2000, layout:"topCenter", type:"success", text: msg, onClose:onClose});
+  noty({
+    modal: true, 
+    timeout: 2000,
+    layout: "topCenter",
+    type: "success",
+    text: msg,
+    callback: {
+      onClose: onClose
+    }
+  });
 }
